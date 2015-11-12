@@ -43,7 +43,7 @@
 <script>
 $(function() {
 
-$('#datatable').dataTable({
+var $table = $('#datatable').dataTable({
     "oLanguage": {
       "sLengthMenu": "每页显示 _MENU_ 条记录",
       "sZeroRecords": "对不起，查询不到任何相关数据",
@@ -60,8 +60,8 @@ $('#datatable').dataTable({
           "sLast":     " 最后一页 "
       }
   }
-
 })  
+$table.fnDestroy();
 })
 </script>
 

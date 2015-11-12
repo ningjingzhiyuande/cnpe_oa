@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
   def last_year_annual
     year=Date.today.year-1
     annual = user_nj_leaves.where("year=?", year).first
-    annual.remain_days.to_i
+    annual.remain_days.to_i rescue 0
   end
 
   def leave_nj_days(year=Date.today.year)
