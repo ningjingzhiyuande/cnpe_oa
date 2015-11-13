@@ -6,7 +6,7 @@ class OrderMailer < ActionMailer::Base
 
     @obj = ActiveModel::GlobalLocator.locate(obj) 
     status = @obj.status
-  	emails = PreGood.#@reviewer = User.find @obj.current_reviewer_id if @obj.current_reviewer_id
+  	#emails = PreGood.#@reviewer = User.find @obj.current_reviewer_id if @obj.current_reviewer_id
   	case status
   	when "auditting"
       mail(to: @reviewer.email,subject: "物品申请审核：#{@obj.good.try(:name)}, 请您审核", 
