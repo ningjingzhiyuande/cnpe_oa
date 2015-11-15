@@ -40,7 +40,7 @@ RAILS_ENV=production bundle exec rake kindeditor:assets
 启动unicorn
 
 ```bash
-/etc/init.d/unicorn_cnpe_oa start
+/etc/init.d/unicorn_cnpe_oa.sh start
 ```
 
 有问题时查看unicorn 错误日志： log/unicorn*.log
