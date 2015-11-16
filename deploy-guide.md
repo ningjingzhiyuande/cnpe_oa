@@ -68,3 +68,29 @@ sudo service nginx restart
 2. 请妥善处理之前部署的项目(如关停，或数据如何转移到新项目中来），以免和当前项目产生配置冲突
 
 相关问题请联系国栋或老曹
+
+
+## 后期维护部署 
+
+请在mysql命令行中输入
+
+1. 从宴请系统中导出 宴请表
+
+```sql
+SELECT * INTO OUTFILE '/tmp/yanqing.txt' FROM cgboa_development.entretains;
+```
+
+2. 把宴请数据导入到请假系统
+
+```sql
+LOAD DATA INFILE '/tmp/yanqing.txt' INTO TABLE cgboa2_development.entretains;
+```
+
+验证数据导入正确性
+
+```sql
+select count(*) from cgboa_development.entretains;
+select count(*) from cgboa2_development.entretains;
+```
+
+看看两个数据是否一致！
