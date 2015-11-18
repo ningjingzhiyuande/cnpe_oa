@@ -94,3 +94,27 @@ select count(*) from cgboa2_development.entretains;
 ```
 
 看看两个数据是否一致！
+
+
+## Bug 维护记录
+
+### 修复宴请导入数据问题
+
+1. 在 config/database.yml中增加片段 参考 config/database.yml.sample
+
+```ruby
+yanqing:
+  <<: *default
+  database: yanqing #这里换成宴请的db
+```
+
+2. 启动控制台测试是否正常 
+rails console>> UserYq.count #输出宴请系统中的用户数量，大于0
+
+3. ！！！没问题了，跑修复脚本
+
+3.1. 进入项目根目录下
+3.2. RAILS_ENV=production rails runner script/fix_entretains.rb | tee log/fix-yanqing.log
+
+有些错误未修复数据会出现在log最后(注意保存后期修复），需人工修复一下！
+此脚本修复绝大部分数据问题
